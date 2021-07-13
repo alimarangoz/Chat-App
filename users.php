@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once "php/config.php";
     if(!isset($_SESSION["unique_id"])){
         header("location:login.php");
     }
@@ -14,7 +15,7 @@ include "header.php";
 
             <div class="content">
                 <?php
-                require_once "php/config.php";
+
                 $sql = mysqli_query($conn,"select * from users where unique_id = {$_SESSION["unique_id"]} ");
                 if(mysqli_num_rows($sql) > 0){
                     $row = mysqli_fetch_assoc($sql);
@@ -36,9 +37,9 @@ include "header.php";
             <div class="users-list">
 
             </div>
-        </div>
     </section>
 </div>
+
 <script src="javascript/users.js"></script>
 </body>
 </html>

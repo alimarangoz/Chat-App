@@ -2,13 +2,11 @@ const searchBar = document.querySelector(".users .search input"),
     searchBtn = document.querySelector(".users .search button"),
         usersList = document.querySelector(".users .users-list");
 searchBtn.onclick = () =>{
-    searchBar.classList.toggle("show");
-    searchBtn.classList.toggle("active");
+    searchBar.classList.toggle("active");
     searchBar.focus();
-    if(searchBar.classList.contains("active")){
-        searchBar.value = "";
-        searchBar.classList.remove("active");
-    }
+    searchBar.value = "";
+    searchBtn.classList.toggle("active");
+
 
 }
 
@@ -43,6 +41,7 @@ setInterval(() =>{
                 if(!searchBar.classList.contains("active")){
                     usersList.innerHTML = data;
                 }
+
             }
         }
     }

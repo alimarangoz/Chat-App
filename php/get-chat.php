@@ -14,13 +14,13 @@ if(isset($_SESSION["unique_id"])){
     if(mysqli_num_rows($query) > 0){
         while ($row = mysqli_fetch_assoc($query)){
             if($row['outgoing_msg_id'] === $outgoing_id){ //Sender
-                $output = '<div class="chat outgoing">
+                $output .= '<div class="chat outgoing">
                 <div class="details">
                     <p>'.$row['msg'].'</p>
                 </div>
             </div>';
             }else{ //Receiver
-                $output = '<div class="chat incoming">
+                $output .= '<div class="chat incoming">
                 <img src="php/image/img.png" alt="">
                 <div class="details">
                     <p>'.$row['msg'].'</p>
