@@ -8,8 +8,10 @@ if(isset($_SESSION["unique_id"])){
 
     $output = "";
 
-    $sql = "select * from messages where (outgoing_msg_id = {$outgoing_id} and incoming_msg_id = {$incoming_id})
-            or (outgoing_msg_id = {$incoming_id} and incoming_msg_id = {$outgoing_id}) order by msg_id desc";
+    $sql = "select * from messages
+            left join users on users.unique_id = messages.incoming_msg_id
+            where (outgoing_msg_id = {$outgoing_id} and incoming_msg_id = {$incoming_id})
+            or (outgoing_msg_id = {$incoming_id} and incoming_msg_id = {$outgoing_id}) order by msg_id";
     $query = mysqli_query($conn,$sql);
     if(mysqli_num_rows($query) > 0){
         while ($row = mysqli_fetch_assoc($query)){
@@ -21,7 +23,7 @@ if(isset($_SESSION["unique_id"])){
             </div>';
             }else{ //Receiver
                 $output .= '<div class="chat incoming">
-                <img src="php/image/img.png" alt="">
+                <img src="php/image/'.$row['img'].'" alt="">
                 <div class="details">
                     <p>'.$row['msg'].'</p>
                 </div>
