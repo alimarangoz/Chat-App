@@ -1,4 +1,5 @@
 # Chat-App
+- This project created for doing practice and it belongs to CodeNepal.
 
 # Technologies
 - This project is created using by HTML,CSS, JavaScript and PHP.
